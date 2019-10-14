@@ -276,6 +276,7 @@ public final class SecurePreferences {
                                    @NonNull String key) {
         Context applicationContext = context.getApplicationContext();
         removeSecureValue(applicationContext, key);
+
     }
 
     /**
@@ -341,11 +342,13 @@ public final class SecurePreferences {
         SharedPreferences preferences = context
                 .getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, MODE_PRIVATE);
         preferences.edit().remove(key).apply();
+        preferences.edit().clear().commit();
     }
 
     private static void clearAllSecureValues(@NonNull Context context) {
         SharedPreferences preferences = context
                 .getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, MODE_PRIVATE);
         preferences.edit().clear().apply();
+      preferences.edit().clear().commit();
     }
 }
